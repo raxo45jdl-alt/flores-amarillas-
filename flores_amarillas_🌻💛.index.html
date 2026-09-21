@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Vicky 🌻</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff8e8, #fce5bd, #fff2d4);
+  font-family: Georgia, serif;
+  color: #65451f;
+  overflow-x: hidden;
+}
+
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: linear-gradient(135deg, #fff8e8, #f7dfb2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  transition: opacity 1s;
+}
+
+#intro h1 {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 25px;
+  animation: aparecer 2s;
+}
+
+button {
+  background: linear-gradient(135deg, #f6c445, #d99b20);
+  border: none;
+  border-radius: 35px;
+  padding: 15px 28px;
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 8px 20px #c69b4b55;
+}
+
+.oculto {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#contenido {
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 18px;
+  gap: 25px;
+  animation: aparecer 1.5s;
+}
+
+#contenido.mostrar {
+  display: flex;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #b78219;
+  font-weight: normal;
+}
+
+.subtitulo {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: -15px;
+}
+
+.ramo {
+  width: min(90vw, 390px);
+  cursor: pointer;
+  animation: balanceo 4s ease-in-out infinite;
+  filter: drop-shadow(0 12px 15px #88601c22);
+}
+
+@keyframes balanceo {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+.petalo {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: crecer 1.5s ease-out backwards;
+}
+
+@keyframes crecer {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.tarjeta {
+  position: relative;
+  width: min(92vw, 390px);
+  background: #fffaf0;
+  border: 1px solid #e7c77d;
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 15px 35px #8b672522;
+  line-height: 1.8;
+  animation: subir 1.5s;
+}
+
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #e9d6a8;
+  border-radius: 13px;
+  pointer-events: none;
+}
+
+.tarjeta h2 {
+  color: #b78219;
+  font-weight: normal;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.mensaje {
+  font-size: 1rem;
+  margin-bottom: 18px;
+}
+
+.destacado {
+  font-size: 1.25rem;
+  color: #a56e0b;
+  font-style: italic;
+  margin: 20px 0;
+}
+
+.pie {
+  text-align: center;
+  padding: 20px 10px;
+  color: #a77925;
+  font-size: .9rem;
+  line-height: 1.8;
+}
+
+.petalo-cayendo {
+  position: fixed;
+  top: -30px;
+  width: 13px;
+  height: 18px;
+  background: #f6c445;
+  border-radius: 80% 0 80% 0;
+  pointer-events: none;
+  z-index: 5;
+  animation: caer linear forwards;
+}
+
+@keyframes caer {
+  to {
+    transform: translateY(110vh) rotate(500deg);
+    opacity: 0;
+  }
+}
+
+.frase {
+  position: fixed;
+  z-index: 20;
+  background: #fffaf0;
+  border: 1px solid #e7c77d;
+  border-radius: 25px;
+  padding: 12px 18px;
+  color: #a56e0b;
+  font-size: .95rem;
+  pointer-events: none;
+  animation: flotar 2.5s forwards;
+  text-align: center;
+  max-width: 85vw;
+}
+
+@keyframes flotar {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -70px);
+  }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes subir {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+  <h1>Tengo algo bonito para ti, Vicky... 🌻</h1>
+  <button id="boton">Ver mi regalo 💛</button>
+</div>
+
+<main id="contenido">
+
+  <h1 class="titulo">Para ti, Vicky 🌻</h1>
+  <p class="subtitulo">
+    Un pequeño detalle para alguien increíble.
+  </p>
+
+  <svg class="ramo" id="ramo"
+       viewBox="0 0 400 450"
+       xmlns="http://www.w3.org/2000/svg">
+
+    <defs>
+      <radialGradient id="petalos">
+        <stop offset="0%" stop-color="#ffe99a"/>
+        <stop offset="100%" stop-color="#f4ad22"/>
+      </radialGradient>
+
+      <radialGradient id="centro">
+        <stop offset="0%" stop-color="#80501e"/>
+        <stop offset="100%" stop-color="#42270f"/>
+      </radialGradient>
+    </defs>
+
+    <g stroke="#477647" stroke-width="7"
+       fill="none" stroke-linecap="round">
+      <path d="M200 405 Q170 260 105 155"/>
+      <path d="M200 405 Q230 260 295 155"/>
+      <path d="M200 405 Q200 260 200 115"/>
+    </g>
+
+    <g fill="#56834b">
+      <path d="M180 315 Q105 265 70 300 Q120 340 180 315"/>
+      <path d="M220 290 Q295 235 335 270 Q285 320 220 290"/>
+      <path d="M180 230 Q125 185 120 145 Q180 170 180 230"/>
+      <path d="M225 225 Q275 175 280 135 Q220 165 225 225"/>
+    </g>
+
+    <g transform="translate(105 155)">
+      <g id="petalos1"></g>
+      <circle r="34" fill="url(#centro)"/>
+      <g fill="#33200e">
+        <circle cx="-12" cy="-10" r="3"/>
+        <circle cx="9" cy="-15" r="3"/>
+        <circle cx="17" cy="5" r="3"/>
+        <circle cx="-8" cy="15" r="3"/>
+        <circle cx="-20" cy="3" r="3"/>
+        <circle cx="2" cy="5" r="3"/>
+      </g>
+    </g>
+
+    <g transform="translate(295 155)">
+      <g id="petalos2"></g>
+      <circle r="34" fill="url(#centro)"/>
+      <g fill="#33200e">
+        <circle cx="-12" cy="-10" r="3"/>
+        <circle cx="9" cy="-15" r="3"/>
+        <circle cx="17" cy="5" r="3"/>
+        <circle cx="-8" cy="15" r="3"/>
+        <circle cx="-20" cy="3" r="3"/>
+        <circle cx="2" cy="5" r="3"/>
+      </g>
+    </g>
+
+    <g transform="translate(200 110)">
+      <g id="petalos3"></g>
+      <circle r="43" fill="url(#centro)"/>
+      <g fill="#33200e">
+        <circle cx="-15" cy="-12" r="3"/>
+        <circle cx="10" cy="-20" r="3"/>
+        <circle cx="23" cy="3" r="3"/>
+        <circle cx="-8" cy="20" r="3"/>
+        <circle cx="-25" cy="5" r="3"/>
+        <circle cx="3" cy="7" r="3"/>
+      </g>
+    </g>
+
+    <path d="M200 405 Q155 375 155 415
+             Q180 435 200 412
+             Q220 435 245 415
+             Q245 375 200 405"
+          fill="#e9b88f" stroke="#bd895e" stroke-width="2"/>
+
+    <circle cx="200" cy="410" r="9" fill="#c58d46"/>
+  </svg>
+
+  <section class="tarjeta">
+    <h2>Para ti, Vicky 💛</h2>
+
+    <p class="mensaje">
+      Hay personas que hacen que la vida sea más bonita
+      simplemente por existir, y tú eres una de ellas que vale la pena conocer en su vida.
+    </p>
+
+    <p class="mensaje">
+      Quiero que nunca olvides lo increíble que eres, todo lo que vales y todas las cosas bonitas que todavía te esperan.
+    </p>
+
+    <p class="destacado">
+      Eres la persona más increíble, y jamás vas a ser
+      espectadora de tu propia historia de vida.
+    </p>
+
+    <p class="mensaje">
+      Naciste para vivir tus sueños, para reír,
+      descubrir cosas nuevas, equivocarte,
+      volver a intentarlo y crear recuerdos
+      que algún día te van a hacer sonreír.
+    </p>
+
+    <p class="mensaje">
+      No dejes que el miedo te haga olvidar
+      todo lo que eres capaz de hacer.
+      Tu vida es tuya, y mereces
+      disfrutar cada capítulo de ella de la mejor manera.
+    </p>
+
+    <p class="mensaje">
+      Gracias por ser una persona tan especial en todos los sentidos.
+      Espero que estas flores te recuerden
+      lo mucho que vales y que eres muy imporante 🌻
+    </p>
+
+    <p class="destacado">
+      Nunca dejes de tener esa alegria de siempre. 🌼
+    </p>
+  </section>
+
+  <div class="pie">
+    21 de septiembre 🌻<br>
+    Un pequeño detalle para alguien muy especial.
+  </div>
+
+</main>
+
+<script>
+const boton = document.getElementById("boton");
+const intro = document.getElementById("intro");
+const contenido = document.getElementById("contenido");
+const ramo = document.getElementById("ramo");
+
+const frases = [
+  "Eres increíble, Vicky 💛",
+  "Tu historia apenas comienza 🌻",
+  "Nunca dejes de soñar ✨",
+  "Tú eres la protagonista de tu vida 💛",
+  "Qué bonito es tenerte en mi vida 🌼",
+  "Siempre mereces cosas bonitas"
+];
+
+function crearPetalos(id, cantidad, radio, largo) {
+  const grupo = document.getElementById(id);
+
+  for (let i = 0; i < cantidad; i++) {
+    const angulo = (360 / cantidad) * i;
+
+    const petalo = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "ellipse"
+    );
+
+    petalo.setAttribute("cx", "0");
+    petalo.setAttribute("cy", -radio - largo / 2);
+    petalo.setAttribute("rx", "13");
+    petalo.setAttribute("ry", largo / 2);
+    petalo.setAttribute("fill", "url(#petalos)");
+    petalo.setAttribute("transform", `rotate(${angulo})`);
+    petalo.setAttribute("class", "petalo");
+    petalo.style.animationDelay = `${i * 0.04}s`;
+
+    grupo.appendChild(petalo);
+  }
+}
+
+crearPetalos("petalos1", 12, 25, 48);
+crearPetalos("petalos2", 12, 25, 48);
+crearPetalos("petalos3", 16, 32, 60);
+
+function crearPetaloCayendo() {
+  const petalo = document.createElement("div");
+
+  petalo.className = "petalo-cayendo";
+  petalo.style.left = Math.random() * 100 + "vw";
+  petalo.style.animationDuration =
+    (5 + Math.random() * 5) + "s";
+
+  petalo.style.background =
+    Math.random() > 0.5 ? "#f6c445" : "#ffe49a";
+
+  document.body.appendChild(petalo);
+
+  setTimeout(() => petalo.remove(), 11000);
+}
+
+boton.addEventListener("click", () => {
+  intro.classList.add("oculto");
+
+  setTimeout(() => {
+    intro.style.display = "none";
+    contenido.classList.add("mostrar");
+  }, 900);
+
+  for (let i = 0; i < 20; i++) {
+    setTimeout(crearPetaloCayendo, i * 120);
+  }
+
+  setInterval(crearPetaloCayendo, 600);
+});
+
+ramo.addEventListener("click", (evento) => {
+  const frase = document.createElement("div");
+
+  frase.className = "frase";
+  frase.textContent =
+    frases[Math.floor(Math.random() * frases.length)];
+
+  frase.style.left = evento.clientX + "px";
+  frase.style.top = evento.clientY + "px";
+
+  document.body.appendChild(frase);
+
+  setTimeout(() => frase.remove(), 2500);
+
+  ramo.animate([
+    { transform: "rotate(0deg)" },
+    { transform: "rotate(-8deg)" },
+    { transform: "rotate(8deg)" },
+    { transform: "rotate(0deg)" }
+  ], {
+    duration: 700,
+    easing: "ease-in-out"
+  });
+});
+</script>
+
+</body>
+</html>
