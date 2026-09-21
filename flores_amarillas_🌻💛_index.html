@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flores Amarillas 🌻</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(#fdf6e3, #f8e7c9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* FONDO */
+.fondo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.girasol {
+    position: absolute;
+    animation: caer linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes caer {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* TARJETA */
+.container {
+    width: 500px;
+    height: 680px;
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* FLORES DE LAS ESQUINAS */
+.decor-flor {
+    position: absolute;
+    width: 180px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.flor1 {
+    top: -60px;
+    left: -60px;
+}
+
+.flor2 {
+    bottom: -60px;
+    right: -60px;
+}
+
+/* DIAPOSITIVAS */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.slide.active {
+    display: flex;
+}
+
+/* TEXTOS */
+h1 {
+    color: #6b8e23;
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.slide p {
+    text-align: center;
+    color: #5c7a2c;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* IMÁGENES */
+.slide > img {
+    width: 420px;
+    max-width: 100%;
+    max-height: 390px;
+    object-fit: contain;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+/* BOTONES */
+.botones {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.botones button {
+    background: #8fbf5a;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+.botones button:hover {
+    background: #6f9f42;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* CARTA */
+.carta-slide {
+    justify-content: center;
+    align-items: center;
+}
+
+.hoja-carta {
+    width: 85%;
+    max-width: 380px;
+    height: 85%;
+    background: #fffef8;
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow-y: auto;
+
+    font-size: 18px;
+    line-height: 1.8;
+    color: #222;
+
+    text-align: justify;
+}
+
+.fecha {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.destinatario {
+    margin-bottom: 15px;
+    text-align: left !important;
+}
+
+.hoja-carta p {
+    margin-bottom: 16px;
+}
+
+.despedida {
+    margin-top: 20px;
+}
+
+.firma {
+    margin-top: 5px;
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+        height: 90vh;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .slide p {
+        font-size: 16px;
+    }
+
+    .slide > img {
+        width: 90%;
+        max-height: 350px;
+    }
+
+    .decor-flor {
+        width: 130px;
+    }
+
+    .flor1 {
+        top: -40px;
+        left: -40px;
+    }
+
+    .flor2 {
+        bottom: -40px;
+        right: -40px;
+    }
+
+    .hoja-carta {
+        width: 88%;
+        height: 78%;
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 25px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLORES QUE CAEN -->
+<div class="fondo" id="fondo"></div>
+
+<div class="container">
+
+    <!-- FLORES DECORATIVAS -->
+    <img 
+        class="decor-flor flor1" 
+        src="https://png.pngtree.com/png-clipart/20240310/original/pngtree-yellow-flowers-watercolor-png-image_14559868.png"
+        alt="Flores amarillas"
+    >
+
+    <img 
+        class="decor-flor flor2" 
+        src="https://png.pngtree.com/png-clipart/20240310/original/pngtree-yellow-flowers-watercolor-png-image_14559868.png"
+        alt="Flores amarillas"
+    >
+
+    <!-- SLIDE 1 -->
+    <div class="slide active">
+
+        <h1>Para Kelly 💛</h1>
+
+        <p>
+            Un pequeño detalle para ti...
+        </p>
+
+        <img 
+            src="https://i.pinimg.com/736x/09/d6/59/09d6591427c8e14397b06ecab9017de4.jpg"
+            alt="Flores amarillas"
+        >
+
+        <div class="botones">
+            <button onclick="nextSlide()">
+                Siguiente ➜
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+
+        <p>
+            Aunque la distancia exista,<br>
+            tus flores amarillas siempre llegarán 🌻<br>
+            jamás vas a ser espectadora.
+        </p>
+
+        <img 
+            src="https://i.pinimg.com/736x/5e/82/4a/5e824a82825af4e0e878f4960517e3b5.jpg"
+            alt="Flores amarillas"
+        >
+
+        <div class="botones">
+
+            <button onclick="prevSlide()">
+                ←
+            </button>
+
+            <button onclick="nextSlide()">
+                →
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+
+        <p>
+            Cada flor es un pequeño recordatorio<br>
+            de lo especial que eres y lo mucho que vales 💛
+        </p>
+
+        <img 
+            src="https://i.pinimg.com/736x/15/f2/a0/15f2a03b543087186214be7d716c3620.jpg"
+            alt="Flores amarillas"
+        >
+
+        <div class="botones">
+
+            <button onclick="prevSlide()">
+                ←
+            </button>
+
+            <button onclick="nextSlide()">
+                →
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SLIDE 4 -->
+    <div class="slide">
+
+        <p>
+            Tengo una sorpresa más para ti ✨
+        </p>
+
+        <img 
+            src="https://i.pinimg.com/736x/43/e7/98/43e798ebc28fa84a245c0997434303d0.jpg"
+            alt="Sorpresa"
+        >
+
+        <div class="botones">
+
+            <button onclick="prevSlide()">
+                ←
+            </button>
+
+            <button onclick="goTo(4)">
+                Abrir carta 💌
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SLIDE 5 - CARTA -->
+    <div class="slide carta-slide">
+
+        <div class="hoja-carta">
+
+            <div class="fecha">
+                21 de septiembre 🌻
+            </div>
+
+            <p class="destinatario">
+                <strong>Para Kelly</strong>
+            </p>
+
+            <p>
+                Los momentos más bonitos no siempre son los más grandes,
+                sino los que puedes recordar. A veces son los pequeños
+                detalles o simplemente compartir un momento sin necesidad
+                de hacer algo especial.
+            </p>
+
+            <p>
+                Me he dado cuenta de que son precisamente esos instantes
+                sencillos los que más se quedan en el corazón, los que uno
+                recuerda incluso cuando todo cambia. Porque no se trata de
+                lo que se hace, sino de lo que vives día a día.
+            </p>
+
+            <p>
+                Recuerda que eres una persona que vale muchísimo y que cada
+                cosa, cada detalle, sin importar lo que sea, nunca debe hacerte
+                sentir que eres espectadora. Jamás. Jamás voy a dejar que
+                seas espectadora.
+            </p>
+
+            <p class="despedida">
+                Hasta luego gay 💛
+            </p>
+
+            <p class="firma">
+                <strong>🌻💛</strong>
+            </p>
+
+        </div>
+
+        <div class="botones">
+
+            <button onclick="goTo(0)">
+                🏠 Inicio
+            </button>
+
+            <button onclick="prevSlide()">
+                ←
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let current = 0;
+
+const slides = document.querySelectorAll(".slide");
+
+
+function showSlide(index) {
+
+    slides[current].classList.remove("active");
+
+    current = index;
+
+    slides[current].classList.add("active");
+
+}
+
+
+function nextSlide() {
+
+    let next = current + 1;
+
+    if (next >= slides.length) {
+        next = 0;
+    }
+
+    showSlide(next);
+
+}
+
+
+function prevSlide() {
+
+    let prev = current - 1;
+
+    if (prev < 0) {
+        prev = slides.length - 1;
+    }
+
+    showSlide(prev);
+
+}
+
+
+function goTo(index) {
+
+    showSlide(index);
+
+}
+
+
+/* FLORES QUE CAEN */
+
+const fondo = document.getElementById("fondo");
+
+for (let i = 0; i < 25; i++) {
+
+    let flor = document.createElement("img");
+
+    flor.src = "https://www.pngmart.com/files/4/Sunflower-PNG-HD.png";
+
+    flor.className = "girasol";
+
+    flor.style.left = Math.random() * 100 + "vw";
+
+    flor.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    flor.style.animationDelay =
+        Math.random() * 5 + "s";
+
+    flor.style.width =
+        (25 + Math.random() * 35) + "px";
+
+    fondo.appendChild(flor);
+
+}
+
+</script>
+
+</body>
+</html>
